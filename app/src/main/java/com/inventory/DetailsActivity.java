@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.inventory.DataBase.DbHelper;
 import com.inventory.DataBase.StockContract;
@@ -271,6 +272,7 @@ public class DetailsActivity extends AppCompatActivity {
     private boolean checkIfValueSet(EditText text, String description) {
         if (TextUtils.isEmpty(text.getText())) {
             text.setError("Missing product " + description);
+            Toast.makeText(DetailsActivity.this,"Error There are null Input",Toast.LENGTH_SHORT).show();
             return false;
         } else {
             text.setError(null);
@@ -288,12 +290,12 @@ public class DetailsActivity extends AppCompatActivity {
         supplierPhoneEdit.setText(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_SUPPLIER_PHONE)));
         supplierEmailEdit.setText(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_SUPPLIER_EMAIL)));
         imageView.setImageURI(Uri.parse(cursor.getString(cursor.getColumnIndex(StockContract.StockEntry.COLUMN_IMAGE))));
-        nameEdit.setEnabled(false);
-        priceEdit.setEnabled(false);
-        supplierNameEdit.setEnabled(false);
-        supplierPhoneEdit.setEnabled(false);
-        supplierEmailEdit.setEnabled(false);
-        imageBtn.setEnabled(false);
+//        nameEdit.setEnabled(false);
+//        priceEdit.setEnabled(false);
+//        supplierNameEdit.setEnabled(false);
+//        supplierPhoneEdit.setEnabled(false);
+//        supplierEmailEdit.setEnabled(false);
+//        imageBtn.setEnabled(false);
     }
 
     private void showOrderConfirmationDialog() {
